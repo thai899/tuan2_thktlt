@@ -62,6 +62,19 @@ int binary_search(int* arr, int n, int x) {
 	}
 	return -1;
 }
+void selection_sort(int* arr, int n) {
+	for (int i = 0; i < n - 1; i++) {
+		int min = i;
+		for (int j = i + 1; j < n; j++) {
+			if (arr[j] < arr[min]) {
+				min = j;
+			}
+		}
+		int temp = arr[min];
+		arr[min] = arr[i];
+		arr[i] = temp;
+	}
+}
 int main()
 {
 	srand(time(0));
@@ -131,6 +144,15 @@ int main()
 			else {
 				printf("Vi tri %d\n", binary_result);
 			}
+		}break;
+		case 6:
+		{
+			selection_sort(arr, n);
+			printf("Mang sap xep tang dan theo Selection Sort: ");
+			for (int i = 0; i < n; i++) {
+				printf("%d ", arr[i]);
+			}
+			printf("\n");
 		}break;
 	} while (lc < 8);
 	return 0;
