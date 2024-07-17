@@ -75,6 +75,27 @@ void selection_sort(int* arr, int n) {
 		arr[i] = temp;
 	}
 }
+void quick_sort(int* arr, int left, int right) {
+	if (left < right) {
+		int p = arr[right];
+		int i = left - 1;
+		for (int j = left; j < right; j++) {
+			if (arr[j] < p) {
+				i++;
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+		int temp = arr[i + 1];
+		arr[i + 1] = arr[right];
+		arr[right] = temp;
+		int pi = i + 1;
+
+		quick_sort(arr, left, pi - 1);
+		quick_sort(arr, pi + 1, right);
+	}
+}
 int main()
 {
 	srand(time(0));
@@ -154,6 +175,18 @@ int main()
 			}
 			printf("\n");
 		}break;
+		case 7:
+		{
+			int left = 0, right = n - 1;
+			quick_sort(arr, left, right);
+			printf("Mang sap xep tang dan theo Quick Sort: ");
+			for (int i = 0; i < n; i++) {
+				printf("%d ", arr[i]);
+			}
+			printf("\n");
+
+		}break;
+
 	} while (lc < 8);
 	return 0;
 }
