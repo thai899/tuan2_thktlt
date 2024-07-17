@@ -34,6 +34,18 @@ int linear_search(int* arr, int n, int x) {
 	}
 	return -1;
 }
+void interchange_sort(int* arr, int n) {
+	for (int i = 0; i < n - 1; i++) {
+		for (int j = i + 1; j < n; j++) {
+			if (arr[i] > arr[j])
+			{
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+	}
+}
 int main()
 {
 	srand(time(0));
@@ -78,6 +90,16 @@ int main()
 				printf("\nKhong tim thay phan tu %d trong mang ", x);
 			else
 				printf("\nTim thay phan tu %d trong mang ", x);
+
+		}break;
+		case 4:
+		{
+			interchange_sort(arr, n);
+			printf("Mang sap xep theo tu tang dan  la: ");
+			for (int i = 0; i < n; i++) {
+				printf("%d ", arr[i]);
+			}
+			printf("\n");
 
 		}break;
 	} while (lc < 8);
