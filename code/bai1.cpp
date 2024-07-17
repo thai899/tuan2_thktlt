@@ -46,6 +46,22 @@ void interchange_sort(int* arr, int n) {
 		}
 	}
 }
+int binary_search(int* arr, int n, int x) {
+	int left = 0, right = n - 1;
+	while (left <= right) {
+		int mid = (left + right) / 2;
+		if (arr[mid] == x) {
+			return mid;
+		}
+		else if (arr[mid] < x) {
+			left = mid + 1;
+		}
+		else {
+			right = mid - 1;
+		}
+	}
+	return -1;
+}
 int main()
 {
 	srand(time(0));
@@ -101,6 +117,20 @@ int main()
 			}
 			printf("\n");
 
+		}break;
+		case 5:
+		{
+			int x;
+			printf("\nNhap phan tu can tim: ");
+			scanf_s("%d", &x);
+			int binary_result = binary_search(arr, n, x);
+			printf("Tim kiem nhi phan %d trong mang da sap xep tang dan : ", x);
+			if (binary_result == -1) {
+				printf("Khong tim thay\n");
+			}
+			else {
+				printf("Vi tri %d\n", binary_result);
+			}
 		}break;
 	} while (lc < 8);
 	return 0;
