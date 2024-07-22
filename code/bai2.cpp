@@ -40,14 +40,18 @@ int soSanhHonSo(HonSo hs1, HonSo hs2) {
 	if (giaTri1 > giaTri2) return 1;
 	return 0;
 }
+void chuyenHonSoThanhPhanSo(HonSo hs, int* tuSo, int* mauSo) {
+	*tuSo = hs.phanNguyen * hs.mauSo + hs.tuSo;
+	*mauSo = hs.mauSo;
+}
+
 int main()
 {
 	int lc;
 	srand(time(NULL));
 	int n = 5;
 	HonSo b[5];
-	HonSo hs1 = b[0];
-	HonSo hs2 = b[1];
+	
 	do {
 		menu();
 		printf("\nMoi ban chon ");
@@ -75,9 +79,9 @@ int main()
 			HonSo hs1 = taoHonSoNgauNhien();
 			HonSo hs2 = taoHonSoNgauNhien();
 
-			printf("Hỗn số 1: ");
+			printf("Hon so 1: ");
 			xuatHonSo(hs1);
-			printf("Hỗn số 2: ");
+			printf("Hon so 2: ");
 			xuatHonSo(hs2);
 
 			int ketQua = soSanhHonSo(hs1, hs2);
@@ -92,7 +96,14 @@ int main()
 			}
 		}break;
 		case 4:
-		{}break;
+		{
+			int tuSo, mauSo;
+			HonSo hs = taoHonSoNgauNhien();
+			printf("Hon so : ");
+			xuatHonSo(hs);
+			chuyenHonSoThanhPhanSo(hs, &tuSo, &mauSo);
+			printf("Phan so sau khi chuyen: %d/%d\n", tuSo, mauSo);
+		}break;
 		case 5:
 		{}break;
 		case 6:
