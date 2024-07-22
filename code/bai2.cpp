@@ -30,7 +30,9 @@ HonSo taoHonSoNgauNhien() {
 	int mauSo = rand() % 9 + 1; 
 	return taoHonSo(phanNguyen, tuSo, mauSo);
 }
-
+void xuatHonSo(HonSo hs) {
+	printf("%d %d/%d\n", hs.phanNguyen, hs.tuSo, hs.mauSo);
+}
 int main()
 {
 	int lc;
@@ -52,7 +54,13 @@ int main()
 			}
 		}break;
 		case 2:
-		{}break;
+		{
+
+			printf("Danh sach hon so:\n");
+			for (int i = 0; i < n; i++) {
+				xuatHonSo(b[i]);
+			}
+		}break;
 		case 3:
 		{}break;
 		case 4:
