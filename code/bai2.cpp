@@ -44,7 +44,40 @@ void chuyenHonSoThanhPhanSo(HonSo hs, int* tuSo, int* mauSo) {
 	*tuSo = hs.phanNguyen * hs.mauSo + hs.tuSo;
 	*mauSo = hs.mauSo;
 }
+HonSo tongHonSo(HonSo hs1, HonSo hs2) {
+	HonSo ps1 = chuyenHonSoThanhPhanSo(hs1);
+	HonSo ps2 = chuyenHonSoThanhPhanSo(hs2);
+	int tuSo = ps1.tuSo * ps2.mauSo + ps2.tuSo * ps1.mauSo;
+	int mauSo = ps1.mauSo * ps2.mauSo;
+	return chuyenPhanSoThanhHonSo(tuSo, mauSo);
+}
 
+
+HonSo hieuHonSo(HonSo hs1, HonSo hs2) {
+	HonSo ps1 = chuyenHonSoThanhPhanSo(hs1);
+	HonSo ps2 = chuyenHonSoThanhPhanSo(hs2);
+	int tuSo = ps1.tuSo * ps2.mauSo - ps2.tuSo * ps1.mauSo;
+	int mauSo = ps1.mauSo * ps2.mauSo;
+	return chuyenPhanSoThanhHonSo(tuSo, mauSo);
+}
+
+
+HonSo tichHonSo(HonSo hs1, HonSo hs2) {
+	HonSo ps1 = chuyenHonSoThanhPhanSo(hs1);
+	HonSo ps2 = chuyenHonSoThanhPhanSo(hs2);
+	int tuSo = ps1.tuSo * ps2.tuSo;
+	int mauSo = ps1.mauSo * ps2.mauSo;
+	return chuyenPhanSoThanhHonSo(tuSo, mauSo);
+}
+
+
+HonSo thuongHonSo(HonSo hs1, HonSo hs2) {
+	HonSo ps1 = chuyenHonSoThanhPhanSo(hs1);
+	HonSo ps2 = chuyenHonSoThanhPhanSo(hs2);
+	int tuSo = ps1.tuSo * ps2.mauSo;
+	int mauSo = ps1.mauSo * ps2.tuSo;
+	return chuyenPhanSoThanhHonSo(tuSo, mauSo);
+}
 int main()
 {
 	int lc;
@@ -112,7 +145,23 @@ int main()
 			xuatHonSo(hsMoi);
 		}break;
 		case 6:
-		{}break;
+		{
+			HonSo hs1 = taoHonSoNgauNhien();
+			HonSo hs2 = taoHonSoNgauNhien();
+			HonSo tong = tongHonSo(hs1, hs2);
+			HonSo hieu = hieuHonSo(hs1, hs2);
+			HonSo tich = tichHonSo(hs1, hs2);
+			HonSo thuong = thuongHonSo(hs1, hs2);
+
+			printf("\nTong: ");
+			xuatHonSo(tong);
+			printf("Hieu: ");
+			xuatHonSo(hieu);
+			printf("Tich: ");
+			xuatHonSo(tich);
+			printf("Thuong: ");
+			xuatHonSo(thuong);
+		}break;
 		case 7:
 		{}break;
 		}
