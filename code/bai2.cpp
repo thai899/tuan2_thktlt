@@ -105,7 +105,12 @@ int main()
 			printf("Phan so sau khi chuyen: %d/%d\n", tuSo, mauSo);
 		}break;
 		case 5:
-		{}break;
+		{
+			int tuSo = 10, mauSo = 6;
+			HonSo hsMoi = chuyenPhanSoThanhHonSo(tuSo, mauSo);
+			printf("Hon so sau khi chuyen lai tu phan so %d / %d : ", tuSo, mauSo);
+			xuatHonSo(hsMoi);
+		}break;
 		case 6:
 		{}break;
 		case 7:
