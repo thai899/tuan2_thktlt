@@ -78,6 +78,17 @@ HonSo thuongHonSo(HonSo hs1, HonSo hs2) {
 	int mauSo = ps1.mauSo * ps2.tuSo;
 	return chuyenPhanSoThanhHonSo(tuSo, mauSo);
 }
+void sapXepTang(HonSo* a, int n) {
+	for (int i = 0; i < n - 1; i++) {
+		for (int j = 0; j < n - i - 1; j++) {
+			if (soSanhHonSo(a[j], a[j + 1]) > 0) {
+				HonSo temp = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = temp;
+			}
+		}
+	}
+}
 int main()
 {
 	int lc;
@@ -163,7 +174,11 @@ int main()
 			xuatHonSo(thuong);
 		}break;
 		case 7:
-		{}break;
+		{ sapXepTang(b, n);
+		printf("\nTang dan:\n");
+		for (int i = 0; i < n; i++) {
+			xuatHonSo(b[i]);
+		}}break;
 		}
 	} while(lc<8);
 	return 0;
