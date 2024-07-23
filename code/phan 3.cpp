@@ -63,6 +63,15 @@ int sumOddFirstDigit(int arr[], int n) {
     }
     return sum;
 }
+void countOccurrences(int arr[], int n, int x) {
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == x)
+            count++;
+    }
+    printf("%d xuat hien %d lan", x, count);
+
+}
 
 int main()
 {
@@ -89,6 +98,13 @@ int main()
         {
             int sum = sumOddFirstDigit(arr, n);
             printf("Tong phan tu so dau la chan : %d\n", sum);
+        }break;
+        case 3:
+        {
+            int a;
+            printf("\nNhap so bat ki ");
+            scanf_s("%d", &a);
+            countOccurrences(arr, n, a);
         }break;
         }
 
