@@ -103,6 +103,22 @@ void longestDecreasingSubsequence(int arr[], int n) {
     printf("Do dai day con dai nhat: %d\n", max);
     free(lds);
 }
+int secondSmallest(int arr[], int n) {
+    if (n < 2) return -1;
+
+    int first = arr[0], second = INT_MAX;
+    for (int i = 1; i < n; i++) {
+        if (arr[i] < first) {
+            second = first;
+            first = arr[i];
+        }
+        else if (arr[i] < second && arr[i] != first) {
+            second = arr[i];
+        }
+    }
+    if (second == INT_MAX) return -1;
+    return second;
+}
 
 int main()
 {
@@ -149,6 +165,17 @@ int main()
         case 5:
         {
             longestDecreasingSubsequence(arr, n);
+        }break;
+        case 6:
+        {
+            int secondSmall = secondSmallest(arr, n);
+            if (secondSmall == -1) {
+                printf("Khong co so nho thu hai trong mang.\n");
+            }
+            else {
+                printf("So nho thu hai trong mang: %d\n", secondSmall);
+            }
+
         }break;
         }
 
