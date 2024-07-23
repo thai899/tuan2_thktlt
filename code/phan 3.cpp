@@ -50,6 +50,20 @@ void listPrimes(int n) {
     }
     printf("\n");
 }
+int sumOddFirstDigit(int arr[], int n) {
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        int firstDigit = arr[i];
+        while (firstDigit >= 10) {
+            firstDigit /= 10;
+        }
+        if (firstDigit % 2 != 0) {
+            sum += arr[i];
+        }
+    }
+    return sum;
+}
+
 int main()
 {
     int lc;
@@ -70,6 +84,11 @@ int main()
             printf("\nNhap so bat ki ");
             scanf_s("%d", &a);
             listPrimes(a);
+        }break;
+        case 2:
+        {
+            int sum = sumOddFirstDigit(arr, n);
+            printf("Tong phan tu so dau la chan : %d\n", sum);
         }break;
         }
 
