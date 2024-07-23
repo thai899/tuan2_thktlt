@@ -119,6 +119,26 @@ int secondSmallest(int arr[], int n) {
     if (second == INT_MAX) return -1;
     return second;
 }
+bool containsDigits(int num, int x) {
+    char numStr[12], xStr[3];
+    printf(numStr, "%d", num);
+    printf(xStr, "%d", x);
+    return strstr(numStr, xStr) != NULL || (strchr(numStr, xStr[0]) && strchr(numStr, xStr[1]));
+}
+void findElementsContainingDigits(int arr[], int n, int x) {
+    printf("Tim thay  %d: ", x);
+    bool found = false;
+    for (int i = 0; i < n; i++) {
+        if (containsDigits(arr[i], x)) {
+            printf("%d ", arr[i]);
+            found = true;
+        }
+    }
+    if (!found) {
+        printf("Khong tim thay.");
+    }
+    printf("\n");
+}
 
 int main()
 {
@@ -176,6 +196,15 @@ int main()
                 printf("So nho thu hai trong mang: %d\n", secondSmall);
             }
 
+        }break;
+        case 7:
+        {
+
+            int a;
+            printf("\nNhap so bat ki ");
+            scanf_s("%d", &a);
+
+            findElementsContainingDigits(arr, n, a);
         }break;
         }
 
