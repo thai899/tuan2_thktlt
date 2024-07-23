@@ -72,6 +72,21 @@ void countOccurrences(int arr[], int n, int x) {
     printf("%d xuat hien %d lan", x, count);
 
 }
+int compare(const void* a, const void* b)
+{
+    int int_a = *((int*)a);
+    int int_b = *((int*)b);
+
+    if (int_a % 2 == 0 && int_b % 2 == 0) {
+        return int_a - int_b;
+    }
+    if (int_a % 2 != 0 && int_b % 2 != 0) {
+        return int_b - int_a;
+    }
+    if (int_a % 2 == 0) return -1;
+    return 1;
+}
+
 
 int main()
 {
@@ -105,6 +120,15 @@ int main()
             printf("\nNhap so bat ki ");
             scanf_s("%d", &a);
             countOccurrences(arr, n, a);
+        }break;
+        case 4:
+        {
+            qsort(arr, n, sizeof(int), compare);
+            printf("Mang co so chan tang dan so le giam dan: ");
+            for (int i = 0; i < n; i++) {
+                printf("%d ", arr[i]);
+            }
+            printf("\n");
         }break;
         }
 
