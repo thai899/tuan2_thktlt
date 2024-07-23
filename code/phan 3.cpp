@@ -86,7 +86,23 @@ int compare(const void* a, const void* b)
     if (int_a % 2 == 0) return -1;
     return 1;
 }
+void longestDecreasingSubsequence(int arr[], int n) {
+    int* lds = (int*)malloc(n * sizeof(int));
+    for (int i = 0; i < n; i++) lds[i] == 1;
 
+    for (int i = 1; i < n; i++)
+        for (int j = 0; j < i; j++)
+            if (arr[i] < arr[j] && lds[i] < lds[j] + 1)
+                lds[i] = lds[j] + 1;
+
+    int max = 0;
+    for (int i = 0; i < n; i++)
+        if (lds[i] > max)
+            max = lds[i];
+
+    printf("Do dai day con dai nhat: %d\n", max);
+    free(lds);
+}
 
 int main()
 {
@@ -129,6 +145,10 @@ int main()
                 printf("%d ", arr[i]);
             }
             printf("\n");
+        }break;
+        case 5:
+        {
+            longestDecreasingSubsequence(arr, n);
         }break;
         }
 
